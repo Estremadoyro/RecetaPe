@@ -34,6 +34,9 @@ Una buena cantidad de features se quisieron agregar pero debido a constraints de
 - La app puede bootear desde más de una pantalla. 
 - Dark mode wuju
 
+#### Package manager
+- SPM sobre cocoapods para ejecutar a penas se tenga el .xcodeproj.
+
 ###### Me quedé sin más tiempo, gracias por leer.
 ###### Repo: https://github.com/Estremadoyro/RecetaPe
 
