@@ -1,5 +1,5 @@
 //
-//  CustomTabBar.swift
+//  RPeTabBar.swift
 //  RecetaPe
 //
 //  Created by Leonardo  on 8/01/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomTabBar: UITabBarController {
+final class RPeTabBar: UITabBarController {
     // MARK: State
 
     // MARK: Initializers
@@ -27,12 +27,11 @@ final class CustomTabBar: UITabBarController {
     }
 }
 
-private extension CustomTabBar {
+private extension RPeTabBar {
     func configureTabBar() {
-        tabBar.backgroundColor = RPEColor.white
-        tabBar.barTintColor = RPEColor.white
-        tabBar.unselectedItemTintColor = RPEColor.lightGray
-        tabBar.tintColor = RPEColor.cobalt
+        tabBar.barTintColor = RPeColor.white
+        tabBar.unselectedItemTintColor = RPeColor.lightGray
+        tabBar.tintColor = RPeColor.pink
         tabBar.itemPositioning = .centered
         tabBar.itemSpacing = CGFloat(180)
         

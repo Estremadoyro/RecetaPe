@@ -25,9 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             - NewRecipe
             - SavedRecipes
             - Map
+         i.e:
+         Layout tab controller with 3 main screens -> .rootTabBar(screens: [.home, .map, .savedRecipes])
          */
         let bootManager = BootManager()
-        let rootController: UIViewController = bootManager.getRootController(by: .rootModuleController(.home))
+        let rootController: UIViewController = bootManager.getRootController(by: .rootTabBar(screens: [.home, .map, .savedRecipes]))
         
         window = UIWindow(frame: scene.screen.bounds)
         window?.windowScene = scene

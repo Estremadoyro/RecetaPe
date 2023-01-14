@@ -18,13 +18,14 @@ final class HomeNavBar: NavBarConfigurable {
     
     // MARK: Methods
     func configureTitle(with title: String? = nil) {
-        guard let title = title else { return }
         
+        guard let title = title else { return }
+        screen?.navigationController?.navigationBar.prefersLargeTitles = true
         screen?.navigationItem.title = title
     }
 
     func configureLeftItems() {
-        let darkModeItem = UIBarButtonItem(image: RPEIcon.lightMode,
+        let darkModeItem = UIBarButtonItem(image: RPeIcon.lightMode,
                                            style: .plain,
                                            target: self,
                                            action: #selector(didTapDarkMode))
@@ -34,12 +35,12 @@ final class HomeNavBar: NavBarConfigurable {
     }
     
     func configureRightItems() {
-        let configuration = UIImage.SymbolConfiguration(weight: .heavy)
-        let icon = RPEIcon.selectItems.withConfiguration(configuration)
+        let configuration = UIImage.SymbolConfiguration(weight: .regular)
+        let icon = RPeIcon.selectItems.withConfiguration(configuration)
         
         let image = icon
-            .withRenderingMode(.alwaysOriginal)
-            .withTintColor(RPEColor.black)
+//            .withRenderingMode(.alwaysOriginal)
+//            .withTintColor(RPeColor.black)
         
         let selectItemsItem = UIBarButtonItem(image: image,
                                               style: .plain,

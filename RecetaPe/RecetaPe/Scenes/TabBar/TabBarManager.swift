@@ -5,7 +5,7 @@
 //  Created by Leonardo  on 8/01/23.
 //
 
-import Foundation
+import UIKit
 
 /// Manges the CustomTabBar which will be the root controller.
 ///
@@ -15,7 +15,7 @@ import Foundation
 /// - Saved Recipes
 final class TabBarManager {
     // MARK: State
-    private lazy var tabBarController = CustomTabBar()
+    private lazy var tabBarController = RPeTabBar()
     private let screens: [ScreenType]
 
     // MARK: Initializers
@@ -27,8 +27,8 @@ final class TabBarManager {
     func setup() {
         setViewControllers()
     }
-    
-    func getRootTabBar() -> CustomTabBar {
+
+    func getRootTabBar() -> RPeTabBar {
         return tabBarController
     }
 }
@@ -37,11 +37,12 @@ private extension TabBarManager {
     func setViewControllers() {
         let factory = ChildModuleFactory()
         let filteredScreens = screens.filter(screenFilter)
-        let controllers = filteredScreens.map { factory.getChildModule(by: $0).start() }
+        var controllers = filteredScreens.map { factory.getChildModule(by: $0).start() }
+        configureTabBarItems(with: &controllers)
 
         tabBarController.setViewControllers(controllers, animated: false)
     }
-    
+
     /// Filters the screens  by  removing the ones which **cannot** have their own TabBar Item.
     ///
     /// The current only screens with TabBar Items are:
@@ -51,5 +52,14 @@ private extension TabBarManager {
     func screenFilter(screen: ScreenType) -> Bool {
         let allowedScreens: [ScreenType] = [.home, .map, .savedRecipes]
         return allowedScreens.contains(screen)
+    }
+
+    func configureTabBarItems(with navigations: inout [RPeNavigation]) {
+        let rootControllers = navigations.map { $0.topViewController }
+        rootControllers.enumerated().forEach { index, vc in
+            if let home = vc as? HomeScreen {
+                home.tabBarItem = UITabBarItem(title: "Home", image: RPeIcon.home, tag: index)
+            }
+        }
     }
 }

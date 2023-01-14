@@ -1,5 +1,5 @@
 //
-//  CustomNavigation.swift
+//  RPeNavigation.swift
 //  RecetaPe
 //
 //  Created by Leonardo  on 8/01/23.
@@ -19,9 +19,8 @@ extension NavBarConfigurable {
     func configureTitle(with title: String?) {}
 }
 
-final class CustomNavigation: UINavigationController {
+final class RPeNavigation: UINavigationController {
     // MARK: State
-    override var preferredStatusBarStyle: UIStatusBarStyle { .darkContent }
 
     // MARK: Initializers
     init() {
@@ -37,10 +36,11 @@ final class CustomNavigation: UINavigationController {
     // MARK: Methods
 }
 
-extension CustomNavigation {
+extension RPeNavigation {
     func configure() {
         /// Settings
-        navigationBar.backgroundColor = RPEColor.white
+        navigationBar.backgroundColor = RPeColor.white
+        navigationBar.tintColor = RPeColor.pink
 
         /// Remove Navigations bar's line (iOS 14 and below)
         navigationBar.setBackgroundImage(UIImage(), for: .default)

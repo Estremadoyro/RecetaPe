@@ -17,7 +17,7 @@ final class ChildModuleFactory {
     /// Gets a base-module-controller (navigation) by  module.
     /// - Parameter module: The type of module to get the navigation from.
     /// - Returns: Custom navigation controller
-    func getChildModule(by module: ScreenType) -> ChildModule {
+    func getChildModule(by module: ScreenType) -> any ChildModule {
         return RecetaPeModule.shared.getModule(by: module)
     }
 }

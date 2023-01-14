@@ -12,11 +12,11 @@ final class HomeModule: ChildModule {
     
     // MARK: State
     private let presenter: HomePresenter
-    private let navigation = CustomNavigation()
+    private let navigation = RPeNavigation()
     
     // MARK: Initializers
-    init() {
-        let interactor = HomeInteractor()
+    init(recipeRepository: RecipeRepository) {
+        let interactor = HomeInteractor(recipeRepository: recipeRepository)
         let router = HomeRouter(navigation: navigation)
         let presenter = HomePresenter(router: router, interactor: interactor)
         
@@ -24,7 +24,7 @@ final class HomeModule: ChildModule {
     }
    
     // MARK: Methods
-    func start() -> CustomNavigation {
+    func start() -> RPeNavigation {
         let screen = presenter.start()
         navigation.setViewControllers([screen], animated: false)
         presenter.view = screen
